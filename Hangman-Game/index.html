@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman Game</title>
+	   
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">	
+    <script src="assets/javascript/game.js"></script> 
+
+</head>
+
+<body>
+
+    
+    <h1 id=header>HangMan</h1>
+
+
+    <h1 id= Presstostart> Press any key to get started</h1>
+      <div class="panel-body text-left">
+
+
+<Container=left justified>
+<p>Number of Guesses Remaining: <span id="guesses-left"></span></p>
+<p>Letters Already Guessed: <span id="wrong-guesses"></span></p>
+<p>Player Wins: <span id="win-counter"></span></p>
+<p>Player Losses: <span id="loss-counter"></span></p>
+<h3 id="word-blank"></h3>
+
+</div>
+
+
+
+<script type="text/javascript">
+	var wordList = [
+ "jade",
+ "daisy",
+ "kenneth",
+ "tanya",
+ "rocket"
+]
+
+var chosenWord = "";
+var letterInChosenWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
+
+var winCounter = 0;
+var lossCounter = 1;
+var numGuesses =6;
+
+function startGame(){
+
+wrongGuesses = [];
+console.log("this is wrong guesses in startGame", wrongGuesses); 
+numGuesses = 6;
+blanksAndSuccesses = [];
+
+
+
+chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+lettersInChosenWord = chosenWord.split("");
+numBlanks = lettersInChosenWord.length;
+console.log(chosenWord);
+console.log(numBlanks)
+
+for(var i = 0; i < numBlanks; i++){
+    blanksAndSuccesses.push("_");
+}
+console.log(blanksAndSuccesses);
+document.getElementById('word-blank').innerHTML = blanksAndSuccesses.join(" ");
+document.getElementById('guesses-left').innerHTML = numGuesses;
+
+
+
+}
+
+
+function checkLetters(letter){
+    
+
+    var letterInWord = false;
+    for(var i = 0; i < numBlanks; i++){
+        if(chosenWord[i] === letter){
+            letterInWord = true;
+        }
+    }
+
+    if(letterInWord){
+        for(i = 0; i < numBlanks; i++){
+            if(chosenWord[i] === letter){
+            blanksAndSuccesses[i] = letter;
+
+        }
+
+        }
+    }else{
+        numGuesses --;
+        wrongGuesses.push(letter)
+
+    }
+
+}
+
+
+function roundComplete(){
+
+
+    document.getElementById('word-blank').innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById('guesses-left').innerHTML = numGuesses;
+    document.getElementById('wrong-guesses').innerHTML = wrongGuesses.join(" ");
+
+    console.log(lettersInChosenWord);
+    console.log(blanksAndSuccesses);
+    if(lettersInChosenWord.join(" ") === blanksAndSuccesses.join(" ")){
+        winCounter++;
+        alert("You win");
+        document.getElementById('win-counter').innerHTML = winCounter;
+        startGame();
+    }else if(numGuesses === 0){
+        document.getElementById('loss-counter').innerHTML  = lossCounter ++;
+        document.getElementById('wrong-guesses').innerHTML = "";
+        alert("you don't have any more guesses");        
+        startGame();
+    }
+
+
+
+
+}
+startGame();
+document.onkeyup = function(event){
+
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log("this is the letter we typed", letterGuessed)
+    checkLetters(letterGuessed)
+    roundComplete();
+
+
+}
+</script>
+
+  </div>
+</div>
+
+</body>
+</html>

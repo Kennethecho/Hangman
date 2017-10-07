@@ -1,0 +1,84 @@
+body{
+	width:1280px;
+	padding: 0;
+	margin: 0;
+	background-image: url("../images/backgrounds/hang6.jpg");
+	font-family:"gerorgia","Times New Roman", Times, serif;
+	font-size:18px;
+	
+}
+
+
+#header{
+	float:left;
+	margin-top: -369px;
+	margin-left: 312px;
+	font-size: 104px;
+	text-shadow:  2px 0px 4px #0698ff, 2px 0px 11px #515ca9, 2px 0 #ffffff, 0 2px #0647ff;
+	font-family: cursive;
+}
+
+.panel-body {
+	color: #eeeeee;
+    float: right;
+    margin-top: 35px;
+    margin-right:99px;
+    position:static;
+}
+ #Presstostart{
+	clear: both;
+    margin-left: 859px;
+    margin-top: 389px;
+    font-size: 29px;
+    font-family: cursive;
+    color: #333333;
+    text-shadow: 2px 0px 4px #0698ff, 2px 0px 11px #515ca9, 2px 0 #ffffff, 0 2px #0647ff;
+
+
+ } 
+/*#wrong-guesses{margin-right:10px;}*/
+
+
+ @media screen and (max-width: 980px){
+
+	body {width:980px;}
+
+	#header {
+    float: left;
+    margin-top: -181px;
+    margin-left: 300px;
+}
+
+	.panel-body { 
+    margin-top: 35px;
+    margin-right: 339px;}
+
+    #Presstostart{
+    margin-left: 352px;
+    margin-top: 220px;}
+
+}
+
+@media screen and (max-width: 600px){
+
+	body {width:600px;}
+
+	#header {
+    margin-top: -181px;
+    margin-left: 81px;
+}
+
+	.panel-body { 
+    margin-top: 35px;
+    margin-right: 160px;}
+
+    #Presstostart{
+    margin-left: 139px;
+    margin-top: 220px;}
+}
+
+
+ 
+
+
+
